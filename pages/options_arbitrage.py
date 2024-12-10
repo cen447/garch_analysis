@@ -41,11 +41,9 @@ Where:
 ---
 """)
 
-# Add the strategy explanation collapsible section
 with st.expander("Click here to understand the strategy and how profits are made"):
     st.write("""
     ### Explanation: Why You Hold the Stock Long or Short in Arbitrage Trading
-
     In options arbitrage strategies based on **put-call parity**, the stock position (long or short) balances the arbitrage trade and ensures you lock in the profit without market risk.
 
     ### How Put-Call Parity Works
@@ -54,7 +52,7 @@ with st.expander("Click here to understand the strategy and how profits are made
     C - P = S - K \cdot e^{-rT}
     \]
     Where:
-    - \( C \): Call option price
+    - \( C \): Call option price.
     - \( P \): Put option price.
     - \( S \): Current price of the underlying stock.
     - \( K \): Strike price of the options.
@@ -64,23 +62,59 @@ with st.expander("Click here to understand the strategy and how profits are made
     ---
     ### Case 1: Positive Parity Opportunity
     **When \( C - P > S - K \cdot e^{-rT} \):**
-    - **Action:** Sell the call, buy the put, and buy the underlying stock.
-    - **Why Hold the Stock (Long):** Holding the stock ensures you can fulfill the obligation to sell if the call is exercised. This eliminates market risk.
-    - **Profit:** The difference between the overpriced call and underpriced put, adjusted for costs.
+    - **What You Do**:
+      1. Sell the call.
+      2. Buy the put.
+      3. Buy the stock.
+    - **Why Hold the Stock (Long)**:
+      - If the call is exercised, you need to deliver the stock. By owning it, you eliminate the risk of having to buy it at a higher price.
+      - The put protects you if the stock price falls.
+    - **Profit**:
+      - Comes from the mispricing between the call, put, and stock prices.
+      - Example:
+        - Stock Price (\( S \)): $100.
+        - Call Price (\( C \)): $8.
+        - Put Price (\( P \)): $3.
+        - Strike Price (\( K \)): $105.
+      - Actions:
+        - Sell Call (\( +8 \)).
+        - Buy Put (\( -3 \)).
+        - Buy Stock (\( -100 \)).
+      - Profit at Expiration (\( S \leq K \)): \( K - Total Cost \).
+        - If \( S = 105 \): \( 105 - 95 = 10 \).
 
     ---
     ### Case 2: Negative Parity Opportunity
     **When \( C - P < S - K \cdot e^{-rT} \):**
-    - **Action:** Buy the call, sell the put, and short the underlying stock.
-    - **Why Short the Stock:** Shorting locks in the current price and ensures you profit from the mispricing when you repurchase it at a lower strike price.
-    - **Profit:** The difference between the overpriced put and underpriced call.
+    - **What You Do**:
+      1. Buy the call.
+      2. Sell the put.
+      3. Short the stock.
+    - **Why Short the Stock**:
+      - If the put is exercised, you must buy the stock at the strike price. Shorting ensures you can lock in the current market price.
+      - The call protects you if the stock price rises.
+    - **Profit**:
+      - Comes from the mispricing between the call, put, and stock prices.
+      - Example:
+        - Stock Price (\( S \)): $100.
+        - Call Price (\( C \)): $2.
+        - Put Price (\( P \)): $6.
+        - Strike Price (\( K \)): $95.
+      - Actions:
+        - Buy Call (\( -2 \)).
+        - Sell Put (\( +6 \)).
+        - Short Stock (\( +100 \)).
+      - Profit at Expiration (\( S \geq K \)): \( Short Sale Proceeds - Cost to Repurchase \).
+        - If \( S = 95 \): \( 100 - 95 - 2 + 6 = 9 \).
 
     ---
-    ### How the Money is Made
-    Arbitrage profits come from exploiting mispricing in the market:
-    1. Take advantage of deviations in the put-call parity formula.
-    2. Hedge market risk with stock (long or short).
-    3. Lock in risk-free profit by holding until the option's expiration date.
+    ### Why You Hold or Short the Stock
+    The stock position ensures that:
+    1. **Hedging Risk**: Protects you from price movements.
+    2. **Meeting Obligations**: Covers any exercise of the call or put.
+    3. **Guaranteed Profit**: Locks in the difference caused by mispricing.
+
+    **Holding Period**: You hold the stock or short position until the options expiration date, at which point the trade resolves, and you collect the profit.
     """)
 
 # Input for stock symbol
