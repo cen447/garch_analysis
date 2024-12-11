@@ -8,6 +8,9 @@ import plotly.express as px
 # Set up Streamlit page
 st.set_page_config(page_title="Stock Trend Analyzer with Predictions", layout="wide")
 
+# Add a logo/image to the sidebar with specified width
+st.sidebar.image("growth-chart-invest.png", width=65)
+
 # Title
 st.title("Stock Trend Analyzer with Price Prediction")
 st.subheader("How Price Prediction Works")

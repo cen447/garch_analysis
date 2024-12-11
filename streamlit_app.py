@@ -5,6 +5,9 @@ from garch_helpers import garch_forecast
 
 st.set_page_config(page_title="GARCH Individual Analysis", layout="wide")
 
+# Add a logo/image to the sidebar with specified width
+st.sidebar.image("growth-chart-invest.png", width=65)
+
 st.title("GARCH Individual Asset Analysis")
 st.write("Analyze GARCH(1,1) volatility forecasts for individual stocks or assets.")
 

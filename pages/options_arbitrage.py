@@ -6,6 +6,9 @@ from datetime import datetime
 
 st.set_page_config(page_title="Options Arbitrage Scanner", layout="wide")
 
+# Add a logo/image to the sidebar with specified width
+st.sidebar.image("growth-chart-invest.png", width=65)
+
 st.title("Options Arbitrage Scanner")
 st.write("""
 This app analyzes options arbitrage opportunities based on **put-call parity** and helps identify the best contracts to buy and sell to exploit mispricing in the market.

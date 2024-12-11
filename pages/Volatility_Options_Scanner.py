@@ -5,6 +5,9 @@ import time
 
 st.set_page_config(page_title="Volatility Options Scanner", layout="wide")
 
+# Add a logo/image to the sidebar with specified width
+st.sidebar.image("growth-chart-invest.png", width=65)
+
 st.title("Volatility Scanner for Options")
 st.write("This page analyzes a list of stocks and identifies the most volatile options candidates.")
 
