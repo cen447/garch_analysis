@@ -10,6 +10,53 @@ st.set_page_config(page_title="Stock Trend Analyzer with Predictions", layout="w
 
 # Title
 st.title("Stock Trend Analyzer with Price Prediction")
+st.subheader("How Price Prediction Works")
+with st.expander("prediction methodology"):
+    st.write("""
+    **Prediction Methodology:**
+
+    1. **Baseline Growth:**
+       - The average daily percentage change in stock prices is used to calculate expected growth over the selected prediction horizon.
+       - Formula: 
+         \\[
+         \\text{Baseline Growth} = (1 + \\text{Average Daily Change})^{\\text{Prediction Horizon}} - 1
+         \\]
+
+    2. **Trends:**
+       - Short-, medium-, and long-term trends are derived from moving averages:
+         - **Short-Term Trend:** Comparison of the 20-day moving average with the current close price.
+         - **Medium-Term Trend:** Comparison of the 50-day moving average with the current close price.
+         - **Long-Term Trend:** Comparison of the 200-day moving average with the current close price.
+
+       - Formula: 
+         \\[
+         \\text{Trend} = \\frac{\\text{Moving Average} - \\text{Current Close Price}}{\\text{Current Close Price}}
+         \\]
+
+    3. **Weighted Prediction Change:**
+       - The trends are weighted (40% each for short- and medium-term trends, 20% for long-term trend) and combined with baseline growth:
+         \\[
+         \\text{Prediction Change} = (0.4 \\times \\text{Short-Term Trend}) + (0.4 \\times \\text{Medium-Term Trend}) + (0.2 \\times \\text{Long-Term Trend}) + \\text{Baseline Growth}
+         \\]
+
+    4. **Predicted Price:**
+       - The predicted price is calculated as:
+         \\[
+         \\text{Predicted Price} = \\text{Current Close Price} \\times (1 + \\text{Prediction Change})
+         \\]
+
+    5. **Confidence Interval:**
+       - A range of potential prices is calculated using historical volatility:
+         \\[
+         \\text{Confidence Interval} = \\left( \\text{Predicted Price} \\times (1 - \\text{Volatility}), \\text{Predicted Price} \\times (1 + \\text{Volatility}) \\right)
+         \\]
+       - Volatility is the standard deviation of daily percentage changes.
+
+    **Key Notes:**
+    - The model relies on historical trends and does not account for unforeseen market events.
+    - Confidence intervals provide a range where the price is likely to fall, not a guarantee.
+    """)
+
 st.write("""
 Analyze stock trends with multiple technical indicators, predict short-term price movements, and stay updated with news and fundamental reports.
 """)
